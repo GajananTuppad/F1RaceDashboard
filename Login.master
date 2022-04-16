@@ -1,0 +1,100 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Login.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Auto Fleet</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        body
+        {
+        	color:Blue;
+        }
+        
+        
+        .style2
+        {
+            text-align: center;
+        }
+        .style5
+        {
+            height: 65px;
+        }
+        .style12
+        {
+         height:10px;
+            
+        }
+        a:hover
+        {
+        	color:Red;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+       
+
+                        <div style="float:left;margin-left:100px;color:White;size:18px;">
+                <table align="center" border="0" width="800px" style="border-bottom: medium solid #A4BAE8;
+                    height: 300px; border-left-color: #A4BAE8; border-right-color: #A4BAE8; border-top-color: #A4BAE8;">
+                    <tr>
+                        <td>
+                            <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource1" Height="16px"
+                                Width="250px" OnPageIndexChanging="FormView1_PageIndexChanging">
+                                <EditItemTemplate>
+                                    Name:
+                                    <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update"
+                                        Text="Update" />
+                                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False"
+                                        CommandName="Cancel" Text="Cancel" />
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    Name:
+                                    <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert"
+                                        Text="Insert" />
+                                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False"
+                                        CommandName="Cancel" Text="Cancel" />
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    Welcome:
+                                    <asp:Label ID="NameLabel" runat="server" Text='<%# Bind("Name") %>' />
+                                    &nbsp;<br />
+                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+                                    <br />
+                                </ItemTemplate>
+                                <EmptyDataTemplate>
+                                    Welcome: Guest<br /><br />
+                                    <a href="Login.aspx" >Login</a> or <a href="registernewuser.aspx">register</a>
+                                </EmptyDataTemplate>
+                            </asp:FormView>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                                SelectCommand="SELECT [Name] FROM [UserTable] WHERE [Username] = @Username">
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="Username" SessionField="Username" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                        </td>
+                        <td class="style12">
+                  <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </td>
+                    </tr>
+                    
+                    
+                </table>
+    
+           
+
+    </div>
+    </form>
+</body>
+</html>

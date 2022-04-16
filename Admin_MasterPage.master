@@ -1,0 +1,97 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin_MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<style type="text/css">
+.header
+{
+	background:black;
+	color:White;
+	text-align:center;
+}
+.left
+{
+	width:20%;
+	float:left;
+	height:700px;
+	background:black;
+	color:White;
+}
+.right
+{
+	width:80%;
+	float:right;
+	height:600px;
+	background:cornsilk;
+	color:Black;
+}
+</style>
+    <title>Untitled Page</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+    <div class="header">
+    <h1>Formula-1.net</h1>
+            <p>Welcome
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            </p>
+        <p><asp:LinkButton 
+                ID="LinkButton1" runat="server" onclick="LinkButton1_Click" Font-Bold="True" 
+                ForeColor="White">Logout</asp:LinkButton>
+            </p>
+</div>
+    <div class="content">
+    <div class="left">
+    Welcome menu
+    </br>
+    </br>
+        <asp:TreeView ID="TreeView1" runat="server" ImageSet="BulletedList4" 
+            ShowExpandCollapse="False" BackColor="#FFCCFF" 
+            onselectednodechanged="TreeView1_SelectedNodeChanged">
+            <ParentNodeStyle Font-Bold="False" />
+            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+            <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" 
+                HorizontalPadding="0px" VerticalPadding="0px" />
+            <Nodes>
+                <asp:TreeNode NavigateUrl="~/admin_home.aspx" Text="Home" Value="Home">
+                </asp:TreeNode>
+                <asp:TreeNode NavigateUrl="~/adminProfile.aspx" Text="Profile" Value="Profile">
+                </asp:TreeNode>
+                <asp:TreeNode Text="Schedule" Value="view track">
+                    <asp:TreeNode NavigateUrl="~/admin_setschedule.aspx" Text="Set " Value="Set ">
+                    </asp:TreeNode>
+                    <asp:TreeNode Text="Manage" Value="Manage" 
+                        NavigateUrl="~/Admin_manage_schedule.aspx"></asp:TreeNode>
+                </asp:TreeNode>
+                <asp:TreeNode Text="result" Value="result">
+                    <asp:TreeNode NavigateUrl="~/Admin_Result.aspx" Text="set" Value="set">
+                    </asp:TreeNode>
+                    <asp:TreeNode Text="manage" Value="manage" 
+                        NavigateUrl="~/admin_manage_result.aspx"></asp:TreeNode>
+                </asp:TreeNode>
+                <asp:TreeNode Text="teams" Value="time and travel" 
+                    NavigateUrl="~/admin_teams.aspx"></asp:TreeNode>
+                <asp:TreeNode NavigateUrl="~/Admin_View_Booked_Ticket.aspx" 
+                    Text="Booked Tickets" Value="Booked Tickets"></asp:TreeNode>
+            </Nodes>
+            <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" 
+                HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+        </asp:TreeView>
+        ..
+        <img src="images/f3.jpg" height="300px" width="200px"/>
+    </div>
+    <div class="right">
+    
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
